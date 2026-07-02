@@ -1,0 +1,278 @@
+%% Template TCC I — UFMA / Engenharia da Computação
+%% Baseado no abnTeX2 (ABNT NBR 10719:2011)
+%%
+%% INSTRUÇÕES RÁPIDAS:
+%% 1. Substitua todos os textos marcados com \placeholder{...}
+%% 2. Leia as caixas \orientacao{...} — elas explicam o que escrever em cada seção
+%% 3. Remova ou comente as orientações antes de entregar o documento final
+%% 4. Compile com: pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+
+\documentclass[
+12pt,
+openright,
+oneside,
+a4paper,
+english,
+french,
+spanish,
+brazil
+]{abntex2}
+
+% ---
+% Pacotes básicos
+% ---
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{ragged2e}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{times}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{epigraph}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\sloppy
+\clubpenalty=10000
+\widowpenalty=10000
+\hyphenpenalty=10000
+
+\usepackage{lipsum}
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf,abnt-etal-list=0,abnt-etal-cite=6]{abntex2cite}
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+% ---
+% Comandos do template (remova antes de entregar)
+% ---
+\newcommand{\orientacao}[1]{%
+  \par\vspace{0.2cm}%
+  \noindent\colorbox{blue!8}{%
+    \parbox{\dimexpr\textwidth-2\fboxsep}{%
+      \small\textcolor{blue!50!black}{\textbf{Orientação:} #1}%
+    }%
+  }%
+  \par\vspace{0.3cm}%
+}
+
+\newcommand{\placeholder}[1]{%
+  \textcolor{red!70!black}{\textbf{[#1]}}%
+}
+
+% ---
+% Fontes e hyperlinks
+% ---
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+
+% ---
+% Dados do trabalho — SUBSTITUA PELOS SEUS DADOS
+% ---
+\titulo{\placeholder{TÍTULO DO SEU TCC — seja claro, específico e indicativo do tema e do recorte da pesquisa}}
+
+\autor{\placeholder{NOME COMPLETO DO(A) ALUNO(A)}}
+\orientador{\placeholder{NOME COMPLETO DO(A) ORIENTADOR(A)}}
+\local{São Luís - MA}
+\data{\the\year}
+\tipotrabalho{Monografia (Graduação)}
+\preambulo{Trabalho de Conclusão de Curso submetido ao curso de Engenharia da Computação do Centro de Ciências Exatas e Tecnologia da Universidade Federal do Maranhão como requisito parcial para a obtenção do título de Engenheiro de Computação.}
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+    \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo \bigskip \\ \textbf{Orientador(a):} \imprimirorientador
+    \end{minipage}%
+    \vspace*{\fill}
+  \end{center}
+
+    \begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+}
+\makeatother
+
+\definecolor{blue}{RGB}{41, 5, 195}
+
+\makeatletter
+\hypersetup{
+	pdftitle={\@title},
+	pdfauthor={\@author},
+	pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={tcc}{graduação}{ufma}{engenharia da computação},
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=magenta,
+	urlcolor=black,
+	bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}
+
+\makeindex
+
+\begin{document}
+
+\selectlanguage{brazil}
+\frenchspacing
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+\renewcommand{\imprimircapa}{%
+\begin{capa}%
+\center
+\IfFileExists{figuras/logoufma.png}{%
+  \includegraphics[scale=0.10]{figuras/logoufma.png} \\%
+}{%
+  \orientacao{Adicione o logo da UFMA em \texttt{figuras/logoufma.png} (PNG, fundo transparente recomendado).}%
+  \vspace{1.5cm}%
+}
+\vspace{1cm}
+\ABNTEXchapterfont\Large UNIVERSIDADE FEDERAL DO MARANHÃO \\
+\ABNTEXsectionfont\Large Curso de Engenharia da Computação \\
+
+\vspace*{5cm}
+
+\begin{center}
+{\ABNTEXsectionfont\Large\imprimirautor} \\
+\vfill
+\ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+\end{center}
+\vfill
+\large\imprimirlocal \\
+\large\imprimirdata
+\vspace*{1cm}
+\end{capa}
+}
+
+\imprimircapa
+\imprimirfolhaderosto*
+
+% Após obter a ficha catalográfica no SIGAA, descomente a linha abaixo:
+% \includepdf{ficha_cat.pdf}
+
+% Após obter as assinaturas da banca no TCC II, descomente:
+% \includepdf{assinaturas.pdf}
+
+% ---
+% RESUMO
+% ---
+\begin{resumo}
+
+\orientacao{O resumo deve ter entre 150 e 500 palavras. Apresente, em sequência: (1) contexto e problema; (2) objetivo geral; (3) metodologia proposta; (4) resultados esperados. Escreva em parágrafo único ou poucos parágrafos, sem citações.}
+
+\placeholder{Escreva aqui o resumo do seu TCC I. Exemplo de estrutura: ``Este trabalho investiga [problema] no contexto de [área/tema]. O objetivo é [objetivo geral]. Trata-se de uma pesquisa [tipo/natureza], utilizando [método/fonte de dados]. Espera-se [resultado esperado], contribuindo para [relevância].''}
+
+\textbf{Palavras-chave}: \placeholder{palavra 1}. \placeholder{palavra 2}. \placeholder{palavra 3}. \placeholder{palavra 4}. \placeholder{palavra 5}.
+
+\end{resumo}
+
+% Resumo em inglês (opcional no TCC I — consulte seu orientador):
+% \begin{resumo}[Abstract]
+% \begin{otherlanguage*}{english}
+% \placeholder{Write the abstract in English, mirroring the Portuguese version.}
+% \textbf{Keywords}: \placeholder{keyword 1}. \placeholder{keyword 2}.
+% \end{otherlanguage*}
+% \end{resumo}
+
+\cleardoublepage
+
+% Descomente se usar figuras, tabelas ou abreviaturas:
+% \listoffigures*
+% \cleardoublepage
+% \listoftables*
+% \cleardoublepage
+% \begin{siglas}
+%   \item[\placeholder{SIGLA}] \placeholder{Significado da sigla}
+% \end{siglas}
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+\input{1-introducao}
+\input{2-fundametacao}
+\input{2-trabalhos-relacionados}
+\input{3-metodologia}
+\input{4-resultados}
+\input{5-cronograma}
+\input{6-conclusao}
+
+\phantompart
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+\bibliography{referencias}
+
+% Apêndices e anexos (se necessário no TCC II):
+% \begin{apendicesenv}
+% \partapendices
+% \chapter{\placeholder{Título do apêndice}}
+% \end{apendicesenv}
+
+\end{document}
