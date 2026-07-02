@@ -78,16 +78,14 @@ brazil
 % ---
 \newcommand{\orientacao}[1]{%
   \par\vspace{0.2cm}%
-  \noindent\colorbox{blue!8}{%
-    \parbox{\dimexpr\textwidth-2\fboxsep}{%
-      \small\textcolor{blue!50!black}{\textbf{Orientação:} #1}%
-    }%
-  }%
-  \par\vspace{0.3cm}%
+  \noindent\begin{quote}%
+    \small\textit{\textbf{Orientação:} #1}%
+  \end{quote}%
+  \vspace{0.1cm}%
 }
 
 \newcommand{\placeholder}[1]{%
-  \textcolor{red!70!black}{\textbf{[#1]}}%
+  [#1]%
 }
 
 % ---

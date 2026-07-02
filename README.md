@@ -21,7 +21,7 @@ Template LaTeX (abnTeX2) para o **Trabalho de Conclusão de Curso I** do curso d
 1. **Clone ou copie** este repositório para a pasta do seu TCC.
 2. **Edite `main.tex`**: preencha título, autor(a), orientador(a) e resumo.
 3. **Edite cada capítulo** (`.tex`): substitua os textos `\placeholder{...}` pelo seu conteúdo.
-4. **Leia as caixas azuis** (`Orientação:`): elas explicam o que escrever em cada seção.
+4. **Leia os blocos de orientação** (`Orientação:` em itálico): eles explicam o que escrever em cada seção.
 5. **Adicione referências** em `referencias.bib` e cite com `\cite{chave}`.
 6. **Logo da UFMA**: coloque `logoufma.png` em `figuras/logoufma.png`.
 7. **Antes de entregar**: remova ou comente os comandos `\orientacao{...}` e `\placeholder{...}` do `main.tex` e dos capítulos.
